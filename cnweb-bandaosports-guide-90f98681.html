@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>再次遇见 · 半岛体育</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(145deg, #fff5ea 0%, #fde8d0 50%, #fad8b8 100%);
+            min-height: 100vh;
+            padding: 2rem 1.5rem;
+            color: #2c241e;
+            line-height: 1.6;
+        }
+
+        .page {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* 顶部导航 */
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 247, 240, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            border-radius: 60px;
+            box-shadow: 0 8px 20px rgba(190, 120, 60, 0.12);
+            margin-bottom: 3rem;
+            border: 1px solid rgba(255, 220, 180, 0.4);
+        }
+
+        .nav-logo {
+            font-weight: 600;
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, #b76a2e, #8f4d1f);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4a372b;
+            font-weight: 450;
+            font-size: 0.95rem;
+            padding: 0.3rem 0;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.25s, color 0.2s;
+        }
+
+        .nav-links a:hover {
+            border-bottom-color: #b76a2e;
+            color: #7f4d25;
+        }
+
+        /* hero */
+        .hero {
+            text-align: center;
+            padding: 1.5rem 0 2.5rem 0;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 650;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            background: linear-gradient(to right, #7f4d25, #b76a2e, #a6592a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero p {
+            max-width: 720px;
+            margin: 0 auto 1.8rem auto;
+            font-size: 1.1rem;
+            color: #4b3b2f;
+            background: rgba(255, 245, 235, 0.6);
+            padding: 0.8rem 1.8rem;
+            border-radius: 40px;
+            display: inline-block;
+            backdrop-filter: blur(4px);
+            border: 1px solid #feead9;
+            box-shadow: 0 2px 8px rgba(150, 90, 40, 0.06);
+        }
+
+        /* 核心介绍卡片 */
+        .intro-card {
+            background: white;
+            border-radius: 32px;
+            padding: 2.5rem 2.8rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 12px 30px rgba(160, 100, 50, 0.10);
+            border: 1px solid rgba(255, 230, 210, 0.5);
+            backdrop-filter: blur(2px);
+        }
+
+        .intro-card p {
+            font-size: 1.02rem;
+            margin-bottom: 1rem;
+        }
+
+        .intro-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .intro-card strong {
+            color: #7f4d25;
+            font-weight: 550;
+        }
+
+        /* 三个场景模块 — 卡片网格 */
+        .scene-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.8rem;
+            margin: 2.5rem 0;
+        }
+
+        .scene-item {
+            background: white;
+            border-radius: 28px;
+            padding: 1.8rem 1.6rem 2rem 1.6rem;
+            box-shadow: 0 8px 22px rgba(130, 80, 40, 0.08);
+            border: 1px solid #fdebd9;
+            transition: transform 0.2s, box-shadow 0.25s;
+        }
+
+        .scene-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 28px rgba(150, 90, 45, 0.12);
+        }
+
+        .scene-item .emoji-badge {
+            display: inline-block;
+            background: #fceae0;
+            border-radius: 40px;
+            padding: 0.25rem 0.8rem;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            border: 1px solid #f7dcc6;
+        }
+
+        .scene-item h3 {
+            font-size: 1.25rem;
+            font-weight: 550;
+            color: #3c2b1f;
+            margin-bottom: 0.5rem;
+        }
+
+        .scene-item p {
+            font-size: 0.93rem;
+            color: #4e3b2c;
+            margin-bottom: 0.25rem;
+        }
+
+        .scene-item .tag {
+            display: inline-block;
+            background: #f5e3d2;
+            color: #6a442b;
+            font-size: 0.75rem;
+            padding: 0.15rem 0.7rem;
+            border-radius: 30px;
+            margin-top: 0.5rem;
+            font-weight: 450;
+        }
+
+        /* 常见说明 FAQ 摘要 */
+        .faq-section {
+            background: white;
+            border-radius: 32px;
+            padding: 2rem 2.8rem;
+            margin-top: 0.8rem;
+            margin-bottom: 1.8rem;
+            box-shadow: 0 8px 20px rgba(140, 85, 40, 0.07);
+            border: 1px solid #f7e2cf;
+        }
+
+        .faq-section h2 {
+            font-size: 1.5rem;
+            font-weight: 540;
+            color: #3d2d1f;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.3px;
+            border-left: 4px solid #b76a2e;
+            padding-left: 1rem;
+        }
+
+        .faq-item {
+            padding: 0.9rem 0;
+            border-bottom: 1px solid #f3e0cf;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item .question {
+            font-weight: 510;
+            color: #5f3e28;
+            display: block;
+            margin-bottom: 0.15rem;
+        }
+
+        .faq-item .answer {
+            color: #4f3d2f;
+            font-size: 0.95rem;
+        }
+
+        /* 底部收藏/再次访问提示 */
+        .reminder-strip {
+            background: rgba(255, 245, 235, 0.7);
+            backdrop-filter: blur(6px);
+            border-radius: 60px;
+            padding: 1rem 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem 2rem;
+            margin: 2rem 0 1.5rem 0;
+            border: 1px solid #fadbc4;
+            font-size: 0.98rem;
+            color: #3f3025;
+        }
+
+        .reminder-strip span {
+            background: #e7d2bd;
+            padding: 0.2rem 0.9rem;
+            border-radius: 30px;
+            font-weight: 450;
+            color: #4b321f;
+        }
+
+        .inline-link {
+            color: #8b5a30;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 2px solid #e7cbb2;
+            transition: border-color 0.2s, color 0.2s;
+            padding-bottom: 1px;
+        }
+
+        .inline-link:hover {
+            border-bottom-color: #b76a2e;
+            color: #7a4a24;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #6b5544;
+            padding: 1.2rem 0 0.2rem 0;
+            border-top: 1px solid #f0dac8;
+            margin-top: 2.5rem;
+            opacity: 0.7;
+        }
+
+        /* 响应式 */
+        @media (max-width: 800px) {
+            body {
+                padding: 1.5rem 1rem;
+            }
+            .nav-bar {
+                flex-direction: column;
+                gap: 0.8rem;
+                padding: 1rem 1.2rem;
+                border-radius: 40px;
+            }
+            .nav-links {
+                gap: 1.2rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .scene-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .intro-card {
+                padding: 1.8rem 1.5rem;
+            }
+            .faq-section {
+                padding: 1.5rem 1.2rem;
+            }
+            .reminder-strip {
+                padding: 1rem 1rem;
+                gap: 0.8rem;
+                border-radius: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .hero p {
+                font-size: 0.95rem;
+                padding: 0.6rem 1.2rem;
+            }
+            .nav-links a {
+                font-size: 0.85rem;
+            }
+            .scene-item {
+                padding: 1.4rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 顶部导航 -->
+    <nav class="nav-bar">
+        <div class="nav-logo">半岛·指南</div>
+        <ul class="nav-links">
+            <li><a href="#">首页</a></li>
+            <li><a href="#">场景</a></li>
+            <li><a href="#">备忘</a></li>
+            <li><a href="#">收藏</a></li>
+        </ul>
+    </nav>
+
+    <!-- hero 区域 -->
+    <div class="hero">
+        <h1>又见面了，<br>熟悉的地方</h1>
+        <p>把喜欢的页面放进书签，随时回来</p>
+    </div>
+
+    <!-- 核心介绍：再次访问与收藏角度 -->
+    <div class="intro-card">
+        <p><strong>每次打开浏览器，</strong> 总有几个标签页让人感到安心。而 <a href="https://cnweb-bandaosports.com" class="inline-link">半岛体育</a> 就是这样一个可以反复回来的角落——没有复杂的跳转，没有多余的下拉菜单，只有你熟悉的信息流和干净的内容版块。</p>
+        <p>也许你上次离开时匆忙合上了笔记本，也许只是随手关掉了标签页。没关系，地址栏里敲下几个字母，或者从收藏夹里点一下，就能重新回到这里。<strong>收藏这件事本身，就是对内容的一种投票。</strong></p>
+        <p>我们更希望你是因为“想再来”而收藏，而不是因为“怕找不到”。所以整个页面结构一直保持轻量，无论是手机还是电脑，加载都不需要等待。</p>
+    </div>
+
+    <!-- 三个场景模块 -->
+    <div class="scene-grid">
+        <div class="scene-item">
+            <div class="emoji-badge">📱</div>
+            <h3>通勤路上</h3>
+            <p>早高峰地铁里，单手浏览也顺畅。页面没有大图轰炸，内容优先展示。</p>
+            <span class="tag">碎片时间</span>
+        </div>
+        <div class="scene-item">
+            <div class="emoji-badge">💻</div>
+            <h3>工作间隙</h3>
+            <p>另一个标签页里开着，随时切过去看一眼。不打扰，但一直在那里。</p>
+            <span class="tag">轻量后台</span>
+        </div>
+        <div class="scene-item">
+            <div class="emoji-badge">🏡</div>
+            <h3>晚间沙发</h3>
+            <p>平板或笔记本搁在腿上，慢悠悠地翻阅。没有弹窗催促，节奏由你定。</p>
+            <span class="tag">放松浏览</span>
+        </div>
+    </div>
+
+    <!-- 常见说明 FAQ 摘要 -->
+    <div class="faq-section">
+        <h2>一些你可能想问的</h2>
+        <div class="faq-item">
+            <span class="question">▸ 页面会经常改位置吗？</span>
+            <div class="answer">不会。导航和主要栏目保持稳定，方便你形成肌肉记忆。</div>
+        </div>
+        <div class="faq-item">
+            <span class="question">▸ 收藏后多久回来还能看到？</span>
+            <div class="answer">只要链接不变，内容依然在。我们会定期维护，但不会突然改版让你找不到北。</div>
+        </div>
+        <div class="faq-item">
+            <span class="question">▸ 用手机收藏还是电脑收藏？</span>
+            <div class="answer">都行。页面自适应，两边体验一致。你也可以直接发送到桌面。</div>
+        </div>
+        <div class="faq-item">
+            <span class="question">▸ 需要登录或注册才能看吗？</span>
+            <div class="answer">不用。直接打开就能浏览，没有任何门槛。</div>
+        </div>
+    </div>
+
+    <!-- 再次访问 & 收藏提示条 -->
+    <div class="reminder-strip">
+        <span>⭐ 已收藏</span>
+        <span>📌 再次访问</span>
+        <span>🔖 <a href="https://cnweb-bandaosports.com" class="inline-link">半岛体育</a> 在书签栏等你</span>
+    </div>
+
+    <div class="footer-note">
+        保持简单 · 随时回来
+    </div>
+</div>
+</body>
+</html>
